@@ -1,9 +1,11 @@
-package workwithfiles;
+package uitests.workwithfiles;
 
 import com.codeborne.pdftest.PDF;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import com.codeborne.xlstest.XLS;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.opencsv.CSVReader;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.Test;
 import testdata.ContractData;
 import testdata.dto.Parking;
@@ -21,11 +23,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static testdata.ContractData.getDataContractForVerifyXLSX;
 
 public class WorkWithFilesTests {
-
     ClassLoader cl = getClass().getClassLoader();
 
     @Test
     void verifyFilesInZipFile() throws IOException {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         List<String> expected = List.of("contract30613.XLSX", "currencies.csv", "act_93.pdf");
         List<String> actual = new ArrayList<>();
 
@@ -43,6 +45,7 @@ public class WorkWithFilesTests {
 
     @Test
     void verifyXlsFileInZipFile() throws IOException {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         List<String> expected = List.of("Иванов Сергей Игоревич", "Э100030613", "625029, обл Тюменская, г Тюмень", "23880");
         XLS content = null;
 

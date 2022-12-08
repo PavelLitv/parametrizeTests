@@ -1,9 +1,24 @@
 plugins {
     id 'java-library'
+    id 'io.qameta.allure' version '2.11.2'
 }
 
 repositories {
     mavenCentral()
+}
+
+allure {
+    report {
+        version.set('2.19.0')
+    }
+    adapter {//отвечает за папочку build/allure-result
+        aspectjWeaver.set(true) //обработка анатации @Step
+        frameworks {
+            junit5 {
+                adapterVersion.set('2.19.0')
+            }
+        }
+    }
 }
 
 dependencies {
@@ -16,7 +31,8 @@ dependencies {
             'com.opencsv:opencsv:5.7.1',
             'com.fasterxml.jackson.core:jackson-core:2.13.1',
             'com.fasterxml.jackson.core:jackson-databind:2.14.1',
-            'org.projectlombok:lombok:1.18.24'
+            'org.projectlombok:lombok:1.18.24',
+            'io.qameta.allure:allure-selenide:2.20.1'
     )
     testAnnotationProcessor (
             'org.projectlombok:lombok:1.18.24'
