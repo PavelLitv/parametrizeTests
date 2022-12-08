@@ -33,7 +33,7 @@ public class IssueTests extends BaseTest {
             open(URL);
         });
 
-        step("Найти репозиторий " + REPOSITORY, () ->{
+        step("Найти репозиторий " + REPOSITORY, () -> {
             $("[name = 'q']").click();
             $("[name = 'q']").setValue(REPOSITORY).submit();
         });
@@ -55,10 +55,11 @@ public class IssueTests extends BaseTest {
     void verifyIssueTextByAnnotatedSteps() {
         WebSteps webSteps = new WebSteps();
 
-        webSteps.openPage(URL);
-        webSteps.findRepository(REPOSITORY);
-        webSteps.clickLinkRepository(REPOSITORY);
-        webSteps.clickIssueTab();
-        webSteps.shouldBeIssueWithName(ISSUE_NAME);
+        webSteps
+                .openPage(URL)
+                .findRepository(REPOSITORY)
+                .clickLinkRepository(REPOSITORY)
+                .clickIssueTab()
+                .shouldBeIssueWithName(ISSUE_NAME);
     }
 }

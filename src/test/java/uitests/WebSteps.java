@@ -10,28 +10,33 @@ import static org.openqa.selenium.By.linkText;
 public class WebSteps {
 
     @Step("Открыть страницу {url}")
-    public void openPage(String url) {
+    public WebSteps openPage(String url) {
         open(url);
+        return this;
     }
 
     @Step("Найти репозиторий {repository}")
-    public void findRepository(String repository) {
+    public WebSteps findRepository(String repository) {
         $("[name = 'q']").click();
         $("[name = 'q']").setValue(repository).submit();
+        return this;
     }
 
     @Step("Кликнуть по ссылке репозитория {repository}")
-    public void clickLinkRepository(String repository) {
+    public WebSteps clickLinkRepository(String repository) {
         $(linkText(repository)).click();
+        return this;
     }
 
     @Step("Перейти на вкладку Issue")
-    public void clickIssueTab() {
+    public WebSteps clickIssueTab() {
         $("#issues-tab").click();
+        return this;
     }
 
     @Step("Проверить наличие Issue c названием {issueName}")
-    public void shouldBeIssueWithName(String issueName) {
+    public WebSteps shouldBeIssueWithName(String issueName) {
         $("#issue_1736_link").shouldHave(text(issueName));
+        return this;
     }
 }
