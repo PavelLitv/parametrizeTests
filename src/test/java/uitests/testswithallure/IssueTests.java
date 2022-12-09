@@ -32,8 +32,7 @@ public class IssueTests extends BaseTest {
             open(URL);
         });
 
-        step("Найти репозиторий " + REPOSITORY, () -> {
-            $("[name = 'q']").click();
+        step("Найти репозиторий " + REPOSITORY, () -> {            
             $("[name = 'q']").setValue(REPOSITORY).submit();
         });
 
