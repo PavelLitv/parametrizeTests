@@ -19,8 +19,7 @@ public class IssueTests extends BaseTest {
 
     @Test
     void verifyIssueTextFreeSelenide() {
-        open(URL);
-        $("[name = 'q']").click();
+        open(URL);        
         $("[name = 'q']").setValue(REPOSITORY).submit();
         $(linkText(REPOSITORY)).click();
         $("#issues-tab").click();
