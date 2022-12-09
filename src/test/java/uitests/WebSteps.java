@@ -17,7 +17,6 @@ public class WebSteps {
 
     @Step("Найти репозиторий {repository}")
     public WebSteps findRepository(String repository) {
-        $("[name = 'q']").click();
         $("[name = 'q']").setValue(repository).submit();
         return this;
     }
